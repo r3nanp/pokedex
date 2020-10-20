@@ -3,10 +3,10 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
   Html,
+  Head,
   Main,
   NextScript
 } from 'next/document'
-import Head from 'next/head'
 
 import { ServerStyleSheet } from 'styled-components'
 
