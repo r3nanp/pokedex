@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head'
 
-const Link: React.FC = () => {
+const About: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Link</title>
+        <title>About</title>
       </Head>
 
       <main>
@@ -15,4 +15,4 @@ const Link: React.FC = () => {
   )
 }
 
-export default Link
+export default About

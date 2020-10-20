@@ -1,8 +1,10 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable camelcase */
 import Head from 'next/head'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+import { NextPage } from 'next'
 
 import { List } from '../styles/main'
 
@@ -18,8 +20,8 @@ export async function getStaticProps() {
     })
   return {
     props: {
-      pokemons
-    }
+      pokemons,
+    },
   }
 }
 
@@ -33,7 +35,7 @@ interface PokemonsProps {
   }>
 }
 
-const Home: React.FC<PokemonsProps> = ({ pokemons }) => {
+const Home: NextPage<PokemonsProps> = ({ pokemons }) => {
   return (
     <div>
       <Head>
@@ -42,12 +44,14 @@ const Home: React.FC<PokemonsProps> = ({ pokemons }) => {
 
       <main>
         <List>
-          <Link to="/link.tsx">
-            Home
-          </Link>
+          <Link href="about">About</Link>
           {pokemons.map(pokemon => {
             return (
-              <li key={pokemon.entry_number}>{pokemon.pokemon_species.name}</li>
+              <li key={pokemon.entry_number}>
+                <Link href={`/pokemon/${pokemon.entry_number}`}>
+                  <a>{pokemon.pokemon_species.name}</a>
+                </Link>
+              </li>
             )
           })}
         </List>
