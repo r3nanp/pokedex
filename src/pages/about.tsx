@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Head from 'next/head'
 
-const About: React.FC = () => {
+export default function About(): JSX.Element {
   return (
     <>
       <Head>
@@ -14,5 +14,3 @@ const About: React.FC = () => {
     </>
   )
 }
-
-export default About
