@@ -21,5 +21,6 @@ export default createGlobalStyle`
     --bg:  ${props => props.theme.colors.background};
     --text: ${props => props.theme.colors.text};
     --primary: ${props => props.theme.colors.primary};
+    --primary-hover: ${props => props.theme.colors['primary-hover']};
   }
 `
