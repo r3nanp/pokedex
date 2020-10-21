@@ -4,38 +4,21 @@
 /* eslint-disable camelcase */
 import Head from 'next/head'
 import Link from 'next/link'
-import { NextPage } from 'next'
+import { GetStaticProps } from 'next'
 
 import { List } from '../styles/main'
 
-export async function getStaticProps() {
-  const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      }
-    })
-    .then(res => {
-      return res.pokemon_entries
-    })
-  return {
-    props: {
-      pokemons,
-    },
-  }
-}
+// interface PokemonsProps {
+//   pokemons: Array<{
+//     entry_number: number
+//     pokemon_species: {
+//       name: string
+//       url: string
+//     }
+//   }>
+// }
 
-interface PokemonsProps {
-  pokemons: Array<{
-    entry_number: number
-    pokemon_species: {
-      name: string
-      url: string
-    }
-  }>
-}
-
-const Home: NextPage<PokemonsProps> = ({ pokemons }) => {
+export default function Home({ pokemonData }): JSX.Element {
   return (
     <div>
       <Head>
@@ -45,7 +28,7 @@ const Home: NextPage<PokemonsProps> = ({ pokemons }) => {
       <main>
         <List>
           <Link href="about">About</Link>
-          {pokemons.map(pokemon => {
+          {pokemonData.map(pokemon => {
             return (
               <li key={pokemon.entry_number}>
                 <Link href={`/pokemon/${pokemon.entry_number}`}>
@@ -60,4 +43,15 @@ const Home: NextPage<PokemonsProps> = ({ pokemons }) => {
   )
 }
 
-export default Home
+export const getStaticProps: GetStaticProps = async () => {
+  const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
+  const data = await pokemons.json().then(res => {
+    return res.pokemon_entries
+  })
+  return {
+    props: {
+      pokemonData: data,
+    },
+    revalidate: 10,
+  }
+}
