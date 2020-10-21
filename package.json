@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start"
   },
+  "license": "MIT",
   "dependencies": {
     "next": "9.5.5",
     "react": "16.14.0",
