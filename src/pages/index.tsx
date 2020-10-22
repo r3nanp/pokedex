@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable camelcase */
@@ -6,7 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
-import { List } from '../styles/main'
+import { Container, PokemonCard } from '../styles/main'
 
 export default function Home({ pokemonData }): JSX.Element {
   return (
@@ -15,20 +14,29 @@ export default function Home({ pokemonData }): JSX.Element {
         <title>Pokédex</title>
       </Head>
 
-      <main>
-        <List>
-          <Link href="about">About</Link>
-          {pokemonData.map(pokemon => {
-            return (
-              <li key={pokemon.entry_number}>
-                <Link href={`/pokemon/${pokemon.entry_number}`}>
-                  <a>{pokemon.pokemon_species.name}</a>
-                </Link>
-              </li>
-            )
-          })}
-        </List>
-      </main>
+      <Container>
+        {pokemonData.map(pokemon => {
+          return (
+            <PokemonCard key={pokemon.entry_number}>
+              <header>
+                <h1>{pokemon.pokemon_species.name}</h1>
+              </header>
+
+              <footer>
+                <p>Saiba mais sobre:</p>
+                <div>
+                  <Link href={`/pokemon/${pokemon.entry_number}`}>
+                    <button>
+                      <a>{pokemon.pokemon_species.name}</a>
+                    </button>
+                  </Link>
+                </div>
+              </footer>
+            </PokemonCard>
+          )
+        })}
+        <Link href="about">Sobre o projeto</Link>
+      </Container>
     </div>
   )
 }
@@ -38,6 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = await pokemons.json().then(res => {
     return res.pokemon_entries
   })
+
   return {
     props: {
       pokemonData: data,
