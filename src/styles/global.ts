@@ -13,8 +13,9 @@ export default createGlobalStyle`
     font: 400 16px Roboto, sans-serif;
   }
 
-  ul {
-    list-style: none;
+  input, button {
+    outline: none;
+    border: none;
   }
 
   :root {
@@ -22,5 +23,8 @@ export default createGlobalStyle`
     --text: ${props => props.theme.colors.text};
     --primary: ${props => props.theme.colors.primary};
     --primary-hover: ${props => props.theme.colors['primary-hover']};
+    --gray-600: ${props => props.theme.colors['gray-600']};
+    --gray-700: ${props => props.theme.colors['gray-700']};
+    --gray-800: ${props => props.theme.colors['gray-800']};
   }
 `
