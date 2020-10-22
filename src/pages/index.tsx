@@ -8,16 +8,6 @@ import { GetStaticProps } from 'next'
 
 import { List } from '../styles/main'
 
-// interface PokemonsProps {
-//   pokemons: Array<{
-//     entry_number: number
-//     pokemon_species: {
-//       name: string
-//       url: string
-//     }
-//   }>
-// }
-
 export default function Home({ pokemonData }): JSX.Element {
   return (
     <div>
