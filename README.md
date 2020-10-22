@@ -16,7 +16,6 @@
 - Eslint
 - prettier
 - styled-components
-- SWR (Soon)
 
 ## How to run and contribute 🤔
 
