@@ -5,6 +5,8 @@ import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import { Container, DetailsCard } from '../../styles/pokemonDetail'
+
 export default function Pokemon({ info }): JSX.Element {
   const { isFallback } = useRouter()
 
@@ -18,18 +20,22 @@ export default function Pokemon({ info }): JSX.Element {
         <title>Pokémon Detail</title>
       </Head>
 
-      <main>
-        <h1>{info.species.name}</h1>
+      <Container>
+        <DetailsCard>
+          <header></header>
+          <h1>{info.species.name}</h1>
 
-        <img
-          src={info.sprites.front_default}
-          alt={info.species.name}
-          width="100"
-          style={{
-            borderRadius: '50%',
-          }}
-        />
-      </main>
+          <img src={info.sprites.front_default} alt={info.species.name} />
+
+          {info.stats.map(stat => {
+            return (
+              <div key={stat.stat.name}>
+                <p>{stat.stat.name}: {stat.base_stat}</p>
+              </div>
+            )
+          })}
+        </DetailsCard>
+      </Container>
     </div>
   )
 }
