@@ -31,9 +31,15 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    overflow: hidden;
+    padding: 20px;
+  }
 `
 
 export const DetailsCard = styled.div`
+  margin-top: 30px;
   width: 50%;
   max-width: 400px;
 
@@ -56,7 +62,6 @@ export const DetailsCard = styled.div`
     justify-content: center;
 
     > img {
-      width: 340px;
       height: 250px;
       object-fit: cover;
     }
@@ -68,9 +73,11 @@ export const DetailsCard = styled.div`
 `
 
 export const InfoContainer = styled.div`
-  > p {
-    color: var(--text);
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > strong {
+    color: var(--primary);
     text-transform: uppercase;
     padding-bottom: 10px;
   }
