@@ -20,8 +20,8 @@ export const Container = styled.div`
 
     position: fixed;
     top: 0;
-    background: var(--gray-600);
-    border-bottom: 1px solid green;
+    background: var(--primary);
+    border: 1px solid var(--gray-600);
 
     > div {
       margin: 0 auto;

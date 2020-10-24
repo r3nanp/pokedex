@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 
 export const Container = styled.main`
@@ -10,30 +11,44 @@ export const Container = styled.main`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
     background: var(--primary);
     border: 1px solid var(--gray-700);
 
-    > h3 {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 700;
+    > div {
+      > h3 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+      }
     }
   }
 `
 
 export const Wrapper = styled.section`
-  margin-top: 5rem;
+  margin: 5rem 0;
   display: grid;
   grid-template-areas: 'pokemoncard';
   grid-gap: 3rem 2rem;
   grid-template-columns: repeat(auto-fill, 250px);
   justify-content: center;
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
-export const PokemonCard = styled.div`
+export const PokemonCard = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   background: var(--gray-600);
-  grid-area: 'pokemoncard';
+  border-radius: 14px;
 
   padding: 3rem;
   margin: 10px;
@@ -45,7 +60,7 @@ export const PokemonCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50%;
+    height: 100%;
 
     > h1 {
       font-weight: 700;
@@ -97,6 +112,7 @@ export const InfoIcon = styled(AiOutlineInfoCircle)`
   height: 30px;
   fill: white;
   flex-shrink: 0;
+  cursor: pointer;
 
   &:hover {
     fill: var(--text);
