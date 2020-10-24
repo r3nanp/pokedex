@@ -44,12 +44,13 @@ export default function Pokemon({ info }): JSX.Element {
             <img src={info.sprites.front_default} alt={info.species.name} />
           </div>
 
+          <h3>Poké Attributes</h3>
           {info.stats.map(stat => {
             return (
               <InfoContainer key={stat.stat.name}>
-                <p>
+                <strong>
                   {stat.stat.name}: {stat.base_stat}
-                </p>
+                </strong>
               </InfoContainer>
             )
           })}
@@ -62,9 +63,10 @@ export default function Pokemon({ info }): JSX.Element {
 export const getStaticPaths: GetStaticPaths = async () => {
   const request = await fetch('https://pokeapi.co/api/v2/pokedex/2')
 
-  const pokemons = await request.json().then(req => {
-    return req.pokemon_entries
-  })
+  const pokemons = await request.json()
+    .then(req => {
+      return req.pokemon_entries
+    })
 
   const paths = pokemons.map(pokemon => {
     return {
