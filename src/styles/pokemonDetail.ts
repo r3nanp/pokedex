@@ -40,6 +40,7 @@ export const Container = styled.div`
 
 export const DetailsCard = styled.div`
   margin-top: 30px;
+  padding-bottom: 30px;
   width: 50%;
   max-width: 400px;
 
@@ -62,7 +63,7 @@ export const DetailsCard = styled.div`
     justify-content: center;
 
     > img {
-      height: 250px;
+      height: 200px;
       object-fit: cover;
     }
   }
@@ -76,10 +77,11 @@ export const InfoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
   > strong {
     color: var(--primary);
     text-transform: uppercase;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
   }
 `
 export const ArrowIcon = styled(AiOutlineArrowLeft)`

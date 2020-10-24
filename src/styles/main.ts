@@ -31,21 +31,14 @@ export const Container = styled.main`
 export const Wrapper = styled.section`
   margin: 5rem 0;
   display: grid;
-  grid-template-areas: 'pokemoncard';
   grid-gap: 3rem 2rem;
   grid-template-columns: repeat(auto-fill, 250px);
   justify-content: center;
-
-  @media (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-  }
 `
 
 export const PokemonCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  height: 100%;
 
   background: var(--gray-600);
   border-radius: 14px;
@@ -103,7 +96,10 @@ export const PokemonCard = styled(motion.div)`
   }
 
   @media (max-width: 600px) {
-    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `
 

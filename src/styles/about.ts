@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -43,4 +44,24 @@ export const Footer = styled.footer`
       }
     }
   }
+`
+
+const iconCss = css`
+  width: 40px;
+  height: 40px;
+  fill: white;
+  flex-shrink: 0;
+  transition: 0.4s;
+
+  &:hover {
+    fill: var(--text);
+  }
+`
+
+export const GithubLogo = styled(AiOutlineGithub)`
+  ${iconCss}
+`
+
+export const LinkedinLogo = styled(AiOutlineLinkedin)`
+  ${iconCss}
 `
