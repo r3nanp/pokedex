@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
-import { Container, PokemonCard } from '../styles/main'
+import { Container, PokemonCard, InfoIcon, Wrapper } from '../styles/main'
 
 export default function Home({ pokemonData }): JSX.Element {
   return (
@@ -15,26 +15,33 @@ export default function Home({ pokemonData }): JSX.Element {
       </Head>
 
       <Container>
-        {pokemonData.map(pokemon => {
-          return (
-            <PokemonCard key={pokemon.entry_number}>
-              <header>
-                <h1>{pokemon.pokemon_species.name}</h1>
-              </header>
+        <header>
+          <h3>Pokédex</h3>
 
-              <footer>
-                <p>Saiba mais sobre:</p>
-                <div>
-                  <Link href={`/pokemon/${pokemon.entry_number}`}>
-                    <button>
-                      <a>{pokemon.pokemon_species.name}</a>
-                    </button>
-                  </Link>
-                </div>
-              </footer>
-            </PokemonCard>
-          )
-        })}
+          <InfoIcon />
+        </header>
+        <Wrapper>
+          {pokemonData.map(pokemon => {
+            return (
+              <PokemonCard key={pokemon.entry_number}>
+                <header>
+                  <h1>{pokemon.pokemon_species.name}</h1>
+                </header>
+
+                <footer>
+                  <p>Para saber mais sobre:</p>
+                  <div>
+                    <Link href={`/pokemon/${pokemon.entry_number}`}>
+                      <button>
+                        <a>{pokemon.pokemon_species.name}</a>
+                      </button>
+                    </Link>
+                  </div>
+                </footer>
+              </PokemonCard>
+            )
+          })}
+        </Wrapper>
         <Link href="about">Sobre o projeto</Link>
       </Container>
     </div>
