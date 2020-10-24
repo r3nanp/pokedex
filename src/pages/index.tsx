@@ -22,7 +22,9 @@ export default function Home({ pokemonData }): JSX.Element {
             <h3>Pokédex</h3>
           </div>
           <Link href="about">
-            <InfoIcon />
+            <a>
+              <InfoIcon />
+            </a>
           </Link>
         </header>
 
@@ -31,7 +33,6 @@ export default function Home({ pokemonData }): JSX.Element {
             return (
               <PokemonCard
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.7 }}
                 key={pokemon.entry_number}
               >
                 <header>
