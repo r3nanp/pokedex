@@ -24,6 +24,7 @@
 - Eslint
 - prettier
 - styled-components
+- framer-motion
 - React-icons
 
 ## How to run and contribute 🤔
