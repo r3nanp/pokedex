@@ -14,6 +14,8 @@
 
   ![r3nanp](https://img.shields.io/badge/r3nanp-pokedex-blue)
 
+  <img src="./.github/screenshot.png" width="500" height="250"/>
+
 </div>
 
 ---
