@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
 import { Container, PokemonCard, InfoIcon, Wrapper } from '../styles/main'
+import CircleProgress from '../components/CircleProgress'
 
 export default function Home({ pokemonData }): JSX.Element {
   return (
@@ -16,20 +17,29 @@ export default function Home({ pokemonData }): JSX.Element {
 
       <Container>
         <header>
-          <h3>Pokédex</h3>
-
-          <InfoIcon />
+          <CircleProgress />
+          <div>
+            <h3>Pokédex</h3>
+          </div>
+          <Link href="about">
+            <InfoIcon />
+          </Link>
         </header>
+
         <Wrapper>
           {pokemonData.map(pokemon => {
             return (
-              <PokemonCard key={pokemon.entry_number}>
+              <PokemonCard
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.7 }}
+                key={pokemon.entry_number}
+              >
                 <header>
                   <h1>{pokemon.pokemon_species.name}</h1>
                 </header>
 
                 <footer>
-                  <p>Para saber mais sobre:</p>
+                  <p>Learn more about: </p>
                   <div>
                     <Link href={`/pokemon/${pokemon.entry_number}`}>
                       <button>
@@ -42,7 +52,6 @@ export default function Home({ pokemonData }): JSX.Element {
             )
           })}
         </Wrapper>
-        <Link href="about">Sobre o projeto</Link>
       </Container>
     </div>
   )
