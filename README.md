@@ -33,7 +33,6 @@
 # Clone repository
 
 $ git clone https://github.com/r3nanp/pokedex.git
-
 ```
 
 ```
