@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,29 +11,25 @@ export const Wrapper = styled.div`
 `
 
 export const Content = styled.div`
-  height: 100vh;
-`
+  height: 50vh;
 
-export const Header = styled.header`
   display: flex;
-  padding-top: 30px;
-  > h1 {
-    color: var(--primary);
-    text-align: center;
-    font: 700 16px Roboto, sans-serif;
-    text-align: center;
-  }
-`
-
-export const Footer = styled.footer`
-  width: 100vw;
+  flex-direction: column;
 
   > div {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 
     padding-bottom: 40px;
+
+    > p {
+      text-align: center;
+      padding: 0.5rem;
+      color: var(--primary);
+    }
+
     > a {
       color: var(--primary);
       text-decoration: none;
@@ -43,6 +39,17 @@ export const Footer = styled.footer`
         text-decoration: underline;
       }
     }
+  }
+`
+
+export const Footer = styled.footer`
+  display: flex;
+  margin-bottom: 40px;
+  > h1 {
+    color: var(--primary);
+    text-align: center;
+    font: 700 16px Roboto, sans-serif;
+    text-align: center;
   }
 `
 
