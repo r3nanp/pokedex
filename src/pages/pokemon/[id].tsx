@@ -12,6 +12,7 @@ import {
   ArrowIcon,
 } from '../../styles/pokemonDetail'
 import Link from 'next/link'
+import BadgeContainer from '../../components/BadgeContainer'
 
 export default function Pokemon({ info }): JSX.Element {
   const { isFallback } = useRouter()
@@ -45,6 +46,11 @@ export default function Pokemon({ info }): JSX.Element {
           </div>
 
           <h3>Pokémon Attributes</h3>
+          <BadgeContainer>
+            {info.types.map(type => {
+              return <span key={type.type.name}>{type.type.name}</span>
+            })}
+          </BadgeContainer>
           {info.stats.map(stat => {
             return (
               <InfoContainer key={stat.stat.name}>
