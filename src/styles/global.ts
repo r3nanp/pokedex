@@ -22,6 +22,7 @@ export default createGlobalStyle`
     --bg:  ${props => props.theme.colors.background};
     --text: ${props => props.theme.colors.text};
     --primary: ${props => props.theme.colors.primary};
+    --badge: ${props => props.theme.colors.badge};
     --primary-hover: ${props => props.theme.colors['primary-hover']};
     --gray-600: ${props => props.theme.colors['gray-600']};
     --gray-700: ${props => props.theme.colors['gray-700']};
