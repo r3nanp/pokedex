@@ -84,6 +84,7 @@ export const InfoContainer = styled.div`
     padding-bottom: 5px;
   }
 `
+
 export const ArrowIcon = styled(AiOutlineArrowLeft)`
   width: 30px;
   height: 30px;
