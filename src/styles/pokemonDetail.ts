@@ -39,7 +39,7 @@ export const Container = styled.div`
 `
 
 export const DetailsCard = styled.div`
-  margin-top: 30px;
+  margin-top: 35px;
   padding-bottom: 30px;
   width: 50%;
   max-width: 400px;
@@ -48,6 +48,7 @@ export const DetailsCard = styled.div`
   flex-direction: column;
 
   background: var(--gray-600);
+  box-shadow: -1rem 0 3rem #000;
   border-radius: 30px;
 
   > h3 {

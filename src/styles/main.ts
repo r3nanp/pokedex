@@ -41,6 +41,7 @@ export const PokemonCard = styled(motion.div)`
   flex-direction: column;
 
   background: var(--gray-600);
+  box-shadow: -1rem 0 3rem #000;
   border-radius: 14px;
 
   padding: 3rem;
