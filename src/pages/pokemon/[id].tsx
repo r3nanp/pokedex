@@ -6,13 +6,14 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import BadgeContainer from '../../components/BadgeContainer'
+
 import {
   Container,
   DetailsCard,
   InfoContainer,
   ArrowIcon,
 } from '../../styles/pokemonDetail'
-import BadgeContainer from '../../components/BadgeContainer'
 
 export default function Pokemon({ info }): JSX.Element {
   const { isFallback } = useRouter()
@@ -51,6 +52,7 @@ export default function Pokemon({ info }): JSX.Element {
               return <span key={type.type.name}>{type.type.name}</span>
             })}
           </BadgeContainer>
+
           {info.stats.map(stat => {
             return (
               <InfoContainer key={stat.stat.name}>
