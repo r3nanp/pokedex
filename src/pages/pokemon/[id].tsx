@@ -4,6 +4,7 @@
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import {
   Container,
@@ -11,7 +12,6 @@ import {
   InfoContainer,
   ArrowIcon,
 } from '../../styles/pokemonDetail'
-import Link from 'next/link'
 import BadgeContainer from '../../components/BadgeContainer'
 
 export default function Pokemon({ info }): JSX.Element {
