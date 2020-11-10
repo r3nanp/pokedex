@@ -4,11 +4,19 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
+import { FormEvent, useState } from 'react'
 
 import MainContent from '../components/MainContent'
 import PokemonCard from '../components/PokemonCard'
+import Grid from '../components/Grid'
 
 export default function Home({ pokemonData }): JSX.Element {
+  const [query, setQuery] = useState('')
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+  }
+
   return (
     <>
       <Head>
@@ -16,26 +24,41 @@ export default function Home({ pokemonData }): JSX.Element {
       </Head>
 
       <MainContent>
-        {pokemonData.map(pokemon => {
-          return (
-            <PokemonCard key={pokemon.entry_number}>
-              <header>
-                <h1>{pokemon.pokemon_species.name}</h1>
-              </header>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="search-label">
+            <input
+              type="search"
+              id="search-label"
+              value={query}
+              placeholder="Search a pokémon"
+              onChange={event => setQuery(event.target.value)}
+            />
+          </label>
 
-              <footer>
-                <p>Learn more about: </p>
-                <div>
-                  <Link href={`/pokemon/${pokemon.entry_number}`}>
-                    <a>
-                      <button>{pokemon.pokemon_species.name}</button>
-                    </a>
-                  </Link>
-                </div>
-              </footer>
-            </PokemonCard>
-          )
-        })}
+          <button type="submit">Search</button>
+        </form>
+        <Grid>
+          {pokemonData.map(pokemon => {
+            return (
+              <PokemonCard key={pokemon.entry_number}>
+                <header>
+                  <h1>{pokemon.pokemon_species.name}</h1>
+                </header>
+
+                <footer>
+                  <p>Learn more about: </p>
+                  <div>
+                    <Link href={`/pokemon/${pokemon.entry_number}`}>
+                      <a>
+                        <button>{pokemon.pokemon_species.name}</button>
+                      </a>
+                    </Link>
+                  </div>
+                </footer>
+              </PokemonCard>
+            )
+          })}
+        </Grid>
       </MainContent>
     </>
   )
