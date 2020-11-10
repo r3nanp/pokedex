@@ -9,6 +9,11 @@
 </p>
 
 <div align="center">
+  <img src="./.github/screenshot.png" width="450" height="200"/>
+
+</div>
+
+<div align="center">
 
   [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
@@ -16,14 +21,12 @@
 
   ![r3nanp](https://img.shields.io/badge/r3nanp-pokedex-blue?style=flat-square)
 
-
-  <img src="./.github/screenshot.png" width="500" height="250"/>
-
 </div>
 
 ---
 
 ## Techologies used 🛠
+
 - Next.js
 - Typescript
 - Eslint
@@ -65,9 +68,10 @@ $ git commit -m "<commit>"
 
 $ git push origin <branch>
 ```
+
 ---
 
-## Local settings
+### Local settings
 
 ```
 # To run the app in your machine:
@@ -80,3 +84,7 @@ $ yarn dev or npm run dev
 
 $ yarn build or npm run build
 ```
+
+### Screenshots
+
+<img src="./.github/screenshot.png" width="450" height="200"/>
