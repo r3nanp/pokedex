@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Link from 'next/link'
-import { Container, Header, Wrapper, InfoIcon } from './styles'
+import { Header, Wrapper, InfoIcon } from './styles'
 import CircleProgress from '../CircleProgress'
 
 const MainContent: React.FC = ({ children }) => {
   return (
-    <Container>
+    <>
       <Header>
         <CircleProgress />
         <div>
@@ -18,7 +18,7 @@ const MainContent: React.FC = ({ children }) => {
         </Link>
       </Header>
       <Wrapper>{children}</Wrapper>
-    </Container>
+    </>
   )
 }
 

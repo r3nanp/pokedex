@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 
-export const Container = styled.main``
-
 export const Header = styled.header`
   width: 100%;
   height: 50px;
@@ -28,12 +26,41 @@ export const Header = styled.header`
   }
 `
 
-export const Wrapper = styled.section`
-  margin: 5rem 0;
-  display: grid;
-  grid-gap: 3rem 2rem;
-  grid-template-columns: repeat(auto-fill, 250px);
-  justify-content: center;
+export const Wrapper = styled.main`
+  > form {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > label input {
+      margin-right: 7px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      transition: .2s;
+
+      &:focus {
+        border: 2px solid var(--primary);
+      }
+    }
+
+    > button {
+      width: 60px;
+      height: 30px;
+      cursor: pointer;
+
+      font-size: 15px;
+      border-radius: 5px;
+
+      background: var(--primary);
+      color: white;
+      transition: .4s;
+
+      &:hover {
+        background: var(--primary-hover);
+      }
+    }
+  }
 `
 
 export const InfoIcon = styled(AiOutlineInfoCircle)`
