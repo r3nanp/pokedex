@@ -4,18 +4,14 @@
 import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 import BadgeContainer from '../../components/BadgeContainer'
+import InfoContainer from '../../components/InfoContainer'
+import DetailsCard from '../../components/DetailsCard'
+import Header from '../../components/Header'
+import PokeDetails from '../../components/PokeDetails'
 
-import {
-  Container,
-  DetailsCard,
-  InfoContainer,
-  ArrowIcon,
-} from '../../styles/pokemonDetail'
-
-export default function Pokemon({ info }): JSX.Element {
+export default function Pokemon ({ info }): JSX.Element {
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -23,22 +19,13 @@ export default function Pokemon({ info }): JSX.Element {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Pokémon detail</title>
       </Head>
 
-      <Container>
-        <header>
-          <Link href="/">
-            <a>
-              <ArrowIcon />
-            </a>
-          </Link>
-          <div>
-            <h3>PokéInfo</h3>
-          </div>
-        </header>
+      <PokeDetails>
+        <Header text="PokéInfo" />
 
         <DetailsCard>
           <h3>{info.species.name}</h3>
@@ -63,17 +50,18 @@ export default function Pokemon({ info }): JSX.Element {
             )
           })}
         </DetailsCard>
-      </Container>
-    </div>
+      </PokeDetails>
+    </>
   )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const request = await fetch('https://pokeapi.co/api/v2/pokedex/2')
 
-  const pokemons = await request.json().then(req => {
-    return req.pokemon_entries
-  })
+  const pokemons = await request.json()
+    .then(req => {
+      return req.pokemon_entries
+    })
 
   const paths = pokemons.map(pokemon => {
     return {
