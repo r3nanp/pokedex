@@ -5,56 +5,39 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
-import { Container, PokemonCard, InfoIcon, Wrapper } from '../styles/main'
-import CircleProgress from '../components/CircleProgress'
+import MainContent from '../components/MainContent'
+import PokemonCard from '../components/PokemonCard'
 
 export default function Home({ pokemonData }): JSX.Element {
   return (
-    <div>
+    <>
       <Head>
         <title>Pokédex</title>
       </Head>
 
-      <Container>
-        <header>
-          <CircleProgress />
-          <div>
-            <h3>Pokédex</h3>
-          </div>
-          <Link href="about">
-            <a>
-              <InfoIcon />
-            </a>
-          </Link>
-        </header>
+      <MainContent>
+        {pokemonData.map(pokemon => {
+          return (
+            <PokemonCard key={pokemon.entry_number}>
+              <header>
+                <h1>{pokemon.pokemon_species.name}</h1>
+              </header>
 
-        <Wrapper>
-          {pokemonData.map(pokemon => {
-            return (
-              <PokemonCard
-                whileHover={{ scale: 1.1 }}
-                key={pokemon.entry_number}
-              >
-                <header>
-                  <h1>{pokemon.pokemon_species.name}</h1>
-                </header>
-
-                <footer>
-                  <p>Learn more about: </p>
-                  <div>
-                    <Link href={`/pokemon/${pokemon.entry_number}`}>
-                      <button>
-                        <a>{pokemon.pokemon_species.name}</a>
-                      </button>
-                    </Link>
-                  </div>
-                </footer>
-              </PokemonCard>
-            )
-          })}
-        </Wrapper>
-      </Container>
-    </div>
+              <footer>
+                <p>Learn more about: </p>
+                <div>
+                  <Link href={`/pokemon/${pokemon.entry_number}`}>
+                    <a>
+                      <button>{pokemon.pokemon_species.name}</button>
+                    </a>
+                  </Link>
+                </div>
+              </footer>
+            </PokemonCard>
+          )
+        })}
+      </MainContent>
+    </>
   )
 }
 
