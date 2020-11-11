@@ -37,7 +37,7 @@ export const Wrapper = styled.main`
       margin-right: 7px;
       padding: 6px 10px;
       border-radius: 5px;
-      transition: .2s;
+      transition: 0.2s;
 
       &:focus {
         border: 2px solid var(--primary);
@@ -54,7 +54,7 @@ export const Wrapper = styled.main`
 
       background: var(--primary);
       color: white;
-      transition: .4s;
+      transition: 0.4s;
 
       &:hover {
         background: var(--primary-hover);
