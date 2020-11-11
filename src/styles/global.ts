@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--bg);
+    background: var(--background);
     color: var(--text);
     font: 400 16px Roboto, sans-serif;
   }
@@ -19,13 +19,15 @@ export default createGlobalStyle`
   }
 
   :root {
-    --bg:  ${props => props.theme.colors.background};
-    --text: ${props => props.theme.colors.text};
-    --primary: ${props => props.theme.colors.primary};
-    --badge: ${props => props.theme.colors.badge};
-    --primary-hover: ${props => props.theme.colors['primary-hover']};
-    --gray-600: ${props => props.theme.colors['gray-600']};
-    --gray-700: ${props => props.theme.colors['gray-700']};
-    --gray-800: ${props => props.theme.colors['gray-800']};
+    ${props => {
+      const theme = props.theme
+
+      let append = ''
+
+      Object.entries(theme).forEach(([prop, value]) => {
+        append += `--${prop}: ${value};`
+      })
+      return append
+    }}
   }
 `
