@@ -5,22 +5,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  > p {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
 
   > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 
     background: var(--badge);
     color: var(--text);
     border-radius: 10px;
 
     width: 5rem;
+    height: 1.5rem;
     margin: 0.5rem;
     padding: 0.1rem 0.3rem;
   }

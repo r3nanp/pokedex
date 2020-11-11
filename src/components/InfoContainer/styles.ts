@@ -9,5 +9,6 @@ export const Container = styled.div`
     color: var(--primary);
     text-transform: uppercase;
     padding-bottom: 5px;
+    text-align: center;
   }
 `
