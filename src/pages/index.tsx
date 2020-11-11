@@ -15,6 +15,8 @@ export default function Home({ pokemonData }): JSX.Element {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
+
+    query.toLowerCase().trim()
   }
 
   return (
@@ -31,7 +33,7 @@ export default function Home({ pokemonData }): JSX.Element {
               id="search-label"
               value={query}
               placeholder="Search a pokémon"
-              onChange={event => setQuery(event.target.value)}
+              onChange={e => setQuery(e.currentTarget.value)}
             />
           </label>
 
