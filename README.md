@@ -84,7 +84,3 @@ $ yarn dev or npm run dev
 
 $ yarn build or npm run build
 ```
-
-### Screenshots
-
-<img src="./.github/screenshot.png" width="450" height="200"/>
