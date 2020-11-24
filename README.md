@@ -16,9 +16,7 @@
 <div align="center">
 
   [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
-
   ![license mit](https://img.shields.io/github/license/r3nanp/pokedex?color=blue&logo=github&logoColor=mit)
-
   ![r3nanp](https://img.shields.io/badge/r3nanp-pokedex-blue?style=flat-square)
 
 </div>
