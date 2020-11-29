@@ -8,6 +8,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  padding-top: 16px;
+
   @media (max-width: 600px) {
     overflow: hidden;
     padding: 20px;
