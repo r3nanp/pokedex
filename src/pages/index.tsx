@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable camelcase */
+import { FormEvent, useState } from 'react'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { GetStaticProps } from 'next'
-import { FormEvent, useState } from 'react'
 
 import MainContent from '../components/MainContent'
 import PokemonCard from '../components/PokemonCard'
@@ -33,33 +33,31 @@ export default function Home({ pokemonData }): JSX.Element {
               id="search-label"
               value={query}
               placeholder="Search a pokémon"
-              onChange={e => setQuery(e.currentTarget.value)}
+              onChange={e => setQuery(e.target.value)}
             />
           </label>
 
           <button type="submit">Search</button>
         </form>
         <Grid>
-          {pokemonData.map(pokemon => {
-            return (
-              <PokemonCard key={pokemon.entry_number}>
-                <header>
-                  <h1>{pokemon.pokemon_species.name}</h1>
-                </header>
+          {pokemonData.map(pokemon => (
+            <PokemonCard key={pokemon.entry_number}>
+              <header>
+                <h1>{pokemon.pokemon_species.name}</h1>
+              </header>
 
-                <footer>
-                  <p>Learn more about: </p>
-                  <div>
-                    <Link href={`/pokemon/${pokemon.entry_number}`}>
-                      <a>
-                        <button>{pokemon.pokemon_species.name}</button>
-                      </a>
-                    </Link>
-                  </div>
-                </footer>
-              </PokemonCard>
-            )
-          })}
+              <footer>
+                <p>Learn more about: </p>
+                <div>
+                  <Link href={`/pokemon/${pokemon.entry_number}`}>
+                    <a>
+                      <button>{pokemon.pokemon_species.name}</button>
+                    </a>
+                  </Link>
+                </div>
+              </footer>
+            </PokemonCard>
+          ))}
         </Grid>
       </MainContent>
     </>
@@ -75,7 +73,6 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       pokemonData: data,
-    },
-    revalidate: 10,
+    }
   }
 }
