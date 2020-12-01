@@ -10,5 +10,6 @@ export const Container = styled.div`
     text-transform: uppercase;
     padding-bottom: 5px;
     text-align: center;
+    font-size: 15px;
   }
 `

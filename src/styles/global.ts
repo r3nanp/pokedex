@@ -10,12 +10,17 @@ export default createGlobalStyle`
   body {
     background: var(--background);
     color: var(--text);
-    font: 400 16px Roboto, sans-serif;
+    font: 400 16px 'Roboto', sans-serif;
   }
 
   input, button {
     outline: none;
     border: none;
+  }
+
+  h1, h2, strong {
+    color: var(--text);
+    font: 700 24px 'Poppins', system-ui, sans-serif;
   }
 
   :root {

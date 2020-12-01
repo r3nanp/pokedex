@@ -6,7 +6,7 @@ export const Container = styled(motion.div)`
   flex-direction: column;
 
   background: var(--gray-600);
-  box-shadow: -1rem 0 3rem #000;
+  box-shadow: -1rem 0 1.5rem #000;
   border-radius: 14px;
 
   padding: 3rem;
@@ -35,7 +35,7 @@ export const Container = styled(motion.div)`
 
     > p {
       text-align: center;
-      font: 600 1rem Roboto, sans-serif;
+      font: 600 1rem 'Roboto', sans-serif;
     }
 
     > div {
@@ -45,6 +45,7 @@ export const Container = styled(motion.div)`
       border-bottom: 20px;
 
       > a button {
+        font-weight: 700;
         width: 150px;
         height: 50px;
         border-radius: 5px;
@@ -52,7 +53,7 @@ export const Container = styled(motion.div)`
         color: var(--text);
         cursor: pointer;
         text-transform: uppercase;
-        transition: 0.4s;
+        transition: all 0.4s;
 
         &:hover {
           background: var(--primary-hover);
