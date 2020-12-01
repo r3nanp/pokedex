@@ -27,8 +27,6 @@
 
 - Next.js
 - Typescript
-- Eslint
-- prettier
 - styled-components
 - framer-motion
 - React-icons
