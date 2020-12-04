@@ -1,7 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable camelcase */
-import { FormEvent, useState } from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+import { FormEvent, useState, useCallback } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -10,14 +9,25 @@ import MainContent from '../components/MainContent'
 import PokemonCard from '../components/PokemonCard'
 import Grid from '../components/Grid'
 
-export default function Home({ pokemonData }): JSX.Element {
+interface IPokemonDataProps {
+  entry_number: string
+  pokemon_species: {
+    name: string
+  }
+}
+
+interface IPokemonData {
+  pokemonData: IPokemonDataProps[]
+}
+
+const Home: React.FC<IPokemonData> = ({ pokemonData }) => {
   const [query, setQuery] = useState('')
 
-  function handleSubmit(event: FormEvent) {
+  const handleSubmit = useCallback((event: FormEvent) => {
     event.preventDefault()
 
-    query.toLowerCase().trim()
-  }
+    console.log(query)
+  }, [])
 
   return (
     <>
@@ -39,6 +49,7 @@ export default function Home({ pokemonData }): JSX.Element {
 
           <button type="submit">Search</button>
         </form>
+
         <Grid>
           {pokemonData.map(pokemon => (
             <PokemonCard key={pokemon.entry_number}>
@@ -47,7 +58,6 @@ export default function Home({ pokemonData }): JSX.Element {
               </header>
 
               <footer>
-                <p>Learn more about: </p>
                 <div>
                   <Link href={`/pokemon/${pokemon.entry_number}`}>
                     <a>
@@ -73,6 +83,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       pokemonData: data,
-    }
+    },
   }
 }
+
+export default Home

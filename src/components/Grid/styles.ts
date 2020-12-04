@@ -6,4 +6,9 @@ export const Container = styled.section`
   grid-gap: 3rem 2rem;
   grid-template-columns: repeat(auto-fill, 250px);
   justify-content: center;
+
+  > div a {
+    height: 100%;
+    text-decoration: none;
+  }
 `

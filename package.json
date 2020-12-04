@@ -6,7 +6,8 @@
     "dev": "next dev",
     "export": "next export",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --ext .js,.tsx,.ts src/"
   },
   "license": "MIT",
   "dependencies": {

@@ -15,28 +15,28 @@ export const Container = styled(motion.div)`
   width: 250px;
   height: 450px;
 
-  > header {
+  > div header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
+    height: 200%;
 
     > h1 {
       font-weight: 700;
       text-transform: uppercase;
       text-align: center;
     }
+
+    @media (max-width: 600px) {
+      height: 150%;
+    }
   }
 
-  > footer {
+  > div footer {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-
-    > p {
-      text-align: center;
-      font: 600 1rem 'Roboto', sans-serif;
-    }
+    margin-top: 30px;
 
     > div {
       display: flex;
