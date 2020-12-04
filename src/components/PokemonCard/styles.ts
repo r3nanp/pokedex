@@ -32,11 +32,7 @@ export const Container = styled(motion.div)`
     width: 100%;
     display: flex;
     flex-direction: column;
-
-    > p {
-      text-align: center;
-      font: 600 1rem 'Roboto', sans-serif;
-    }
+    padding-top: 90px;
 
     > div {
       display: flex;
