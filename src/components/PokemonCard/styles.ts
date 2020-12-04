@@ -18,21 +18,25 @@ export const Container = styled(motion.div)`
   > div header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
+    height: 200%;
 
     > h1 {
       font-weight: 700;
       text-transform: uppercase;
       text-align: center;
     }
+
+    @media (max-width: 600px) {
+      height: 150%;
+    }
   }
 
   > div footer {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 90px;
+    margin-top: 30px;
 
     > div {
       display: flex;
