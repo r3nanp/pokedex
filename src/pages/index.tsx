@@ -52,27 +52,21 @@ const Home: React.FC<IPokemonData> = ({ pokemonData }) => {
 
         <Grid>
           {pokemonData.map(pokemon => (
-            <div key={pokemon.entry_number}>
-              <Link href={`/pokemon/${pokemon.entry_number}`}>
-                <a>
-                  <PokemonCard>
-                    <header>
-                      <h1>{pokemon.pokemon_species.name}</h1>
-                    </header>
+            <PokemonCard key={pokemon.entry_number}>
+              <header>
+                <h1>{pokemon.pokemon_species.name}</h1>
+              </header>
 
-                    <footer>
-                      <div>
-                        <Link href={`/pokemon/${pokemon.entry_number}`}>
-                          <a>
-                            <button>{pokemon.pokemon_species.name}</button>
-                          </a>
-                        </Link>
-                      </div>
-                    </footer>
-                  </PokemonCard>
-                </a>
-              </Link>
-            </div>
+              <footer>
+                <div>
+                  <Link href={`/pokemon/${pokemon.entry_number}`}>
+                    <a>
+                      <button>{pokemon.pokemon_species.name}</button>
+                    </a>
+                  </Link>
+                </div>
+              </footer>
+            </PokemonCard>
           ))}
         </Grid>
       </MainContent>
