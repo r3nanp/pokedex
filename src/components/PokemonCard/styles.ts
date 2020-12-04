@@ -15,7 +15,7 @@ export const Container = styled(motion.div)`
   width: 250px;
   height: 450px;
 
-  > header {
+  > div header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@ export const Container = styled(motion.div)`
     }
   }
 
-  > footer {
+  > div footer {
     width: 100%;
     display: flex;
     flex-direction: column;
