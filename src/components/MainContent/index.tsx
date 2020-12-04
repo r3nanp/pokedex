@@ -1,7 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import Link from 'next/link'
-import { Header, Wrapper, InfoIcon } from './styles'
 import CircleProgress from '../CircleProgress'
+
+import { Header, Wrapper, InfoIcon } from './styles'
 
 const MainContent: React.FC = ({ children }) => {
   return (
