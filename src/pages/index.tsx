@@ -1,26 +1,29 @@
-/* eslint-disable camelcase */
-/* eslint-disable react/react-in-jsx-scope */
-import { FormEvent, useState, useCallback } from 'react'
+import { FC, FormEvent, useState, useCallback } from 'react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { api } from '../services/api'
 
 import MainContent from '../components/MainContent'
 import PokemonCard from '../components/PokemonCard'
 import Grid from '../components/Grid'
 
-interface IPokemonDataProps {
-  entry_number: string
-  pokemon_species: {
-    name: string
-  }
+interface PokemonProps {
+  pokemon_entries: [
+    {
+      entry_number: string
+      pokemon_species: {
+        name: string
+      }
+    }
+  ]
 }
 
-interface IPokemonData {
-  pokemonData: IPokemonDataProps[]
+interface PokemonData {
+  pokemons: PokemonProps
 }
 
-const Home: React.FC<IPokemonData> = ({ pokemonData }) => {
+const Home: FC<PokemonData> = ({ pokemons }) => {
   const [query, setQuery] = useState('')
 
   const handleSubmit = useCallback((event: FormEvent) => {
@@ -51,7 +54,7 @@ const Home: React.FC<IPokemonData> = ({ pokemonData }) => {
         </form>
 
         <Grid>
-          {pokemonData.map(pokemon => (
+          {pokemons.pokemon_entries.map(pokemon => (
             <PokemonCard key={pokemon.entry_number}>
               <header>
                 <h1>{pokemon.pokemon_species.name}</h1>
@@ -75,14 +78,11 @@ const Home: React.FC<IPokemonData> = ({ pokemonData }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
-  const data = await pokemons.json().then(res => {
-    return res.pokemon_entries
-  })
+  const { data } = await api.get('/pokedex/2/')
 
   return {
     props: {
-      pokemonData: data,
+      pokemons: data,
     },
   }
 }

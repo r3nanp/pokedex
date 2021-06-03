@@ -1,11 +1,8 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable react/react-in-jsx-scope */
+import { FC } from 'react'
 import { Container } from './styles'
 
-export default function BadgeContainer({ children }): JSX.Element {
-  return (
-    <Container>
-      {children}
-    </Container>
-  )
+const BadgeContainer: FC = ({ children }): JSX.Element => {
+  return <Container>{children}</Container>
 }
+
+export default BadgeContainer

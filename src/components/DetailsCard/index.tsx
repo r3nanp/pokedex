@@ -1,12 +1,8 @@
-/* eslint-disable react/react-in-jsx-scope */
+import { FC } from 'react'
 import { Container } from './styles'
 
-const DetailsCard: React.FC = ({ children }) => {
-  return (
-    <Container>
-      {children}
-    </Container>
-  )
+const DetailsCard: FC = ({ children }) => {
+  return <Container>{children}</Container>
 }
 
 export default DetailsCard

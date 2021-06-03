@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable camelcase */
 import Head from 'next/head'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { useRouter } from 'next/router'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 
 import BadgeContainer from '../../components/BadgeContainer'
 import InfoContainer from '../../components/InfoContainer'
@@ -11,13 +7,9 @@ import DetailsCard from '../../components/DetailsCard'
 import Header from '../../components/Header'
 import PokeDetails from '../../components/PokeDetails'
 
-export default function Pokemon ({ info }): JSX.Element {
-  const { isFallback } = useRouter()
-
-  if (isFallback) {
-    return <p>Loading...</p>
-  }
-
+export default function Pokemon({
+  pokemon,
+}: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
   return (
     <>
       <Head>
@@ -28,19 +20,22 @@ export default function Pokemon ({ info }): JSX.Element {
         <Header text="PokéInfo" />
 
         <DetailsCard>
-          <h3>{info.species.name}</h3>
+          <h3>{pokemon.species.name}</h3>
           <div className="image-container">
-            <img src={info.sprites.front_default} alt={info.species.name} />
+            <img
+              src={pokemon.sprites.front_default}
+              alt={pokemon.species.name}
+            />
           </div>
 
           <h3>Pokémon Attributes</h3>
           <BadgeContainer>
-            {info.types.map(type => {
+            {pokemon.types.map(type => {
               return <span key={type.type.name}>{type.type.name}</span>
             })}
           </BadgeContainer>
 
-          {info.stats.map(stat => {
+          {pokemon.stats.map(stat => {
             return (
               <InfoContainer key={stat.stat.name}>
                 <strong>
@@ -58,10 +53,9 @@ export default function Pokemon ({ info }): JSX.Element {
 export const getStaticPaths: GetStaticPaths = async () => {
   const request = await fetch('https://pokeapi.co/api/v2/pokedex/2')
 
-  const pokemons = await request.json()
-    .then(req => {
-      return req.pokemon_entries
-    })
+  const pokemons = await request.json().then(req => {
+    return req.pokemon_entries
+  })
 
   const paths = pokemons.map(pokemon => {
     return {
@@ -73,7 +67,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 
@@ -85,8 +79,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      info: data,
+      pokemon: data,
     },
-    revalidate: 10,
+    revalidate: 60 * 60 * 60, // 2.5 days
   }
 }
