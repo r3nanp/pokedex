@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+import { FC } from 'react'
 import Link from 'next/link'
 import { Container, ArrowIcon } from './styles'
 
@@ -6,7 +6,7 @@ interface TextProps {
   text: string
 }
 
-const Header: React.FC<TextProps> = ({ text }) => {
+const Header: FC<TextProps> = ({ text }) => {
   return (
     <Container>
       <Link href="/">
